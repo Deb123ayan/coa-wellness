@@ -1,0 +1,2749 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COA — Wellness Lounge & Biohacking Clinic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap"
+        rel="stylesheet">
+    <style>
+        /*
+         * COA Wellness — Complete Design System v3
+         * Inspired by: Jony Ive's precision, Opalya's warmth
+         * Brand: #6A3B33 (Deep Terracotta), #CC9C8D (Soft Rose)
+         */
+
+        :root {
+            /* Brand Colors */
+            --terracotta: #6A3B33;
+            --terracotta-light: #7D4A40;
+            --rose: #CC9C8D;
+            --rose-light: #D9B5A8;
+            --rose-pale: #E8D4CB;
+
+            /* Neutrals */
+            --cream: #FAF7F4;
+            --cream-warm: #F5F0EB;
+            --cream-dark: #EDE6DF;
+            --sand: #E5DDD5;
+            --charcoal: #2D2420;
+            --charcoal-light: #4A403A;
+            --white: #FFFFFF;
+
+            /* Text */
+            --text-dark: #2D2420;
+            --text-medium: #5C524A;
+            --text-light: #8A7F76;
+            --text-muted: #A99E95;
+
+            /* Borders */
+            --border-light: rgba(106, 59, 51, 0.08);
+            --border-medium: rgba(106, 59, 51, 0.12);
+            --border-dark: rgba(106, 59, 51, 0.2);
+
+            /* Spacing */
+            --space-2: 2px;
+            --space-4: 4px;
+            --space-8: 8px;
+            --space-12: 12px;
+            --space-16: 16px;
+            --space-20: 20px;
+            --space-24: 24px;
+            --space-32: 32px;
+            --space-40: 40px;
+            --space-48: 48px;
+            --space-64: 64px;
+            --space-80: 80px;
+            --space-96: 96px;
+            --space-120: 120px;
+            --space-160: 160px;
+
+            /* Typography */
+            --font-display: 'Cormorant', Georgia, serif;
+            --font-body: 'DM Sans', -apple-system, sans-serif;
+
+            /* Animation */
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-smooth: cubic-bezier(0.45, 0, 0.15, 1);
+            --duration-fast: 150ms;
+            --duration-normal: 300ms;
+            --duration-slow: 500ms;
+            --duration-slower: 800ms;
+        }
+
+        /* Reset */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        ::selection {
+            background: var(--rose);
+            color: var(--white);
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--cream);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--rose);
+            border-radius: 4px;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        /* ============================================
+           NAVIGATION
+           ============================================ */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: var(--space-24) var(--space-64);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+
+        .nav::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(250, 247, 244, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            opacity: 0;
+            transition: opacity var(--duration-normal) var(--ease-out);
+        }
+
+        .nav.scrolled::before {
+            opacity: 1;
+        }
+
+        .nav.scrolled {
+            padding: var(--space-16) var(--space-64);
+            box-shadow: 0 1px 0 var(--border-light);
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--space-40);
+            list-style: none;
+        }
+
+        .nav-link {
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-medium);
+            position: relative;
+            padding: var(--space-4) 0;
+            transition: color var(--duration-fast);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--terracotta);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform var(--duration-normal) var(--ease-out);
+        }
+
+        .nav-link:hover {
+            color: var(--terracotta);
+        }
+
+        .nav-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 28px;
+            font-weight: 500;
+            color: var(--terracotta);
+            letter-spacing: 0.2em;
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+        }
+
+        .logo-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--rose);
+            border-radius: 50%;
+        }
+
+        .nav-cta {
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--terracotta);
+            padding: var(--space-12) var(--space-24);
+            border: 1px solid var(--terracotta);
+            border-radius: 100px;
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+
+        .nav-cta:hover {
+            background: var(--terracotta);
+            color: var(--cream);
+        }
+
+        /* ============================================
+           HERO
+           ============================================ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: var(--space-160) var(--space-64) var(--space-80);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 100% 70% at 50% 0%, rgba(204, 156, 141, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse 80% 50% at 20% 80%, rgba(204, 156, 141, 0.04) 0%, transparent 50%),
+                var(--cream);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 900px;
+        }
+
+        .hero-eyebrow {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--rose);
+            margin-bottom: var(--space-24);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s var(--ease-out) 0.2s forwards;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(52px, 9vw, 110px);
+            font-weight: 400;
+            line-height: 1.0;
+            color: var(--charcoal);
+            margin-bottom: var(--space-32);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s var(--ease-out) 0.4s forwards;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--terracotta);
+        }
+
+        .hero-desc {
+            font-size: 18px;
+            color: var(--text-medium);
+            max-width: 520px;
+            margin: 0 auto var(--space-40);
+            line-height: 1.8;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s var(--ease-out) 0.6s forwards;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-12);
+            background: var(--terracotta);
+            color: var(--cream);
+            padding: var(--space-16) var(--space-32);
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: all var(--duration-normal) var(--ease-out);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s var(--ease-out) 0.8s forwards;
+        }
+
+        .hero-cta:hover {
+            background: var(--charcoal);
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(106, 59, 51, 0.2);
+        }
+
+        .hero-cta svg {
+            width: 16px;
+            height: 16px;
+            transition: transform var(--duration-slow) linear;
+        }
+
+        .hero-cta:hover svg {
+            transform: rotate(45deg);
+        }
+
+        /* Hero Gallery */
+        .hero-gallery {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: var(--space-20);
+            margin-top: var(--space-80);
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeUp 1s var(--ease-out) 1s forwards;
+        }
+
+        .gallery-item {
+            border-radius: 200px 200px 24px 24px;
+            overflow: hidden;
+            position: relative;
+            transition: transform var(--duration-slow) var(--ease-out);
+            box-shadow: 0 20px 60px rgba(106, 59, 51, 0.1);
+        }
+
+        .gallery-item:nth-child(1) {
+            width: 120px;
+            height: 170px;
+        }
+
+        .gallery-item:nth-child(2) {
+            width: 145px;
+            height: 210px;
+            transform: translateY(-20px);
+        }
+
+        .gallery-item:nth-child(3) {
+            width: 170px;
+            height: 250px;
+            transform: translateY(-40px);
+        }
+
+        .gallery-item:nth-child(4) {
+            width: 145px;
+            height: 210px;
+            transform: translateY(-20px);
+        }
+
+        .gallery-item:nth-child(5) {
+            width: 120px;
+            height: 170px;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .gallery-item:nth-child(2):hover,
+        .gallery-item:nth-child(4):hover {
+            transform: translateY(-30px);
+        }
+
+        .gallery-item:nth-child(3):hover {
+            transform: translateY(-50px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--duration-slow) var(--ease-out);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ============================================
+           INFO STRIP
+           ============================================ */
+        .info-strip {
+            background: var(--terracotta);
+            padding: var(--space-16) 0;
+            overflow: hidden;
+        }
+
+        .info-strip-inner {
+            display: flex;
+            animation: scroll 35s linear infinite;
+        }
+
+        .info-strip-content {
+            display: flex;
+            flex-shrink: 0;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-32);
+            padding: 0 var(--space-48);
+            white-space: nowrap;
+        }
+
+        .info-text {
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-style: italic;
+            color: var(--cream);
+        }
+
+        .info-dot {
+            width: 5px;
+            height: 5px;
+            background: var(--rose);
+            border-radius: 50%;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* ============================================
+           SECTION BASE
+           ============================================ */
+        .section {
+            padding: var(--space-120) var(--space-64);
+        }
+
+        .section-inner {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-80);
+        }
+
+        .section-eyebrow {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--rose);
+            margin-bottom: var(--space-16);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 400;
+            color: var(--charcoal);
+            line-height: 1.15;
+        }
+
+        .section-title em {
+            font-style: italic;
+            color: var(--terracotta);
+        }
+
+        .section-desc {
+            font-size: 16px;
+            color: var(--text-medium);
+            max-width: 500px;
+            margin: var(--space-20) auto 0;
+            line-height: 1.8;
+        }
+
+        /* ============================================
+           ABOUT / PHILOSOPHY
+           ============================================ */
+        .about {
+            background: var(--cream-warm);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-96);
+            align-items: center;
+        }
+
+        .about-visual {
+            position: relative;
+        }
+
+        .about-img-main {
+            width: 100%;
+            max-width: 450px;
+            aspect-ratio: 3/4;
+            border-radius: 225px 225px 32px 32px;
+            overflow: hidden;
+            box-shadow: 0 40px 80px rgba(106, 59, 51, 0.1);
+        }
+
+        .about-img-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-img-float {
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 8px solid var(--cream-warm);
+            box-shadow: 0 20px 40px rgba(106, 59, 51, 0.15);
+        }
+
+        .about-img-float img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-content {
+            padding-right: var(--space-48);
+        }
+
+        .about-quote {
+            font-family: var(--font-display);
+            font-size: 32px;
+            font-style: italic;
+            font-weight: 400;
+            color: var(--charcoal);
+            line-height: 1.4;
+            margin-bottom: var(--space-32);
+            position: relative;
+            padding-left: var(--space-32);
+        }
+
+        .about-quote::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            bottom: 6px;
+            width: 3px;
+            background: linear-gradient(180deg, var(--terracotta), var(--rose));
+            border-radius: 2px;
+        }
+
+        .about-text {
+            font-size: 15px;
+            color: var(--text-medium);
+            line-height: 1.9;
+            margin-bottom: var(--space-20);
+        }
+
+        .about-signature {
+            display: flex;
+            align-items: center;
+            gap: var(--space-16);
+            margin-top: var(--space-40);
+            padding-top: var(--space-32);
+            border-top: 1px solid var(--border-light);
+        }
+
+        .signature-img {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .signature-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .signature-name {
+            font-family: var(--font-display);
+            font-size: 18px;
+            color: var(--charcoal);
+        }
+
+        .signature-role {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        /* ============================================
+           TREATMENTS - REDESIGNED
+           ============================================ */
+        .treatments {
+            background: var(--cream);
+        }
+
+        .treatments-grid {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-24);
+        }
+
+        .treatment-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1.2fr;
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all var(--duration-slow) var(--ease-out);
+        }
+
+        .treatment-card:hover {
+            box-shadow: 0 30px 60px rgba(106, 59, 51, 0.08);
+            border-color: transparent;
+            transform: translateY(-4px);
+        }
+
+        .treatment-card.featured {
+            background: linear-gradient(135deg, var(--charcoal) 0%, #3D322C 100%);
+            border-color: transparent;
+        }
+
+        .treatment-card.featured .treatment-main,
+        .treatment-card.featured .treatment-price-section,
+        .treatment-card.featured .treatment-features {
+            color: var(--cream);
+        }
+
+        .treatment-main {
+            padding: var(--space-40);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-right: 1px solid var(--border-light);
+        }
+
+        .treatment-card.featured .treatment-main {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .treatment-name {
+            font-family: var(--font-display);
+            font-size: 36px;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--terracotta);
+            margin-bottom: var(--space-16);
+        }
+
+        .treatment-card.featured .treatment-name {
+            color: var(--rose-light);
+        }
+
+        .treatment-desc {
+            font-size: 14px;
+            color: var(--text-medium);
+            line-height: 1.7;
+            max-width: 280px;
+        }
+
+        .treatment-card.featured .treatment-desc {
+            color: rgba(250, 247, 244, 0.7);
+        }
+
+        .treatment-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: var(--space-16);
+            margin-top: var(--space-32);
+            border: 1px solid var(--border-medium);
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            color: var(--text-medium);
+            background: transparent;
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+
+        .treatment-btn:hover {
+            background: var(--terracotta);
+            border-color: var(--terracotta);
+            color: var(--cream);
+        }
+
+        .treatment-card.featured .treatment-btn {
+            border-color: rgba(255, 255, 255, 0.2);
+            color: var(--cream);
+        }
+
+        .treatment-card.featured .treatment-btn:hover {
+            background: var(--cream);
+            border-color: var(--cream);
+            color: var(--terracotta);
+        }
+
+        .treatment-price-section {
+            padding: var(--space-40);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-right: 1px solid var(--border-light);
+        }
+
+        .treatment-card.featured .treatment-price-section {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .treatment-price {
+            font-family: var(--font-display);
+            font-size: 48px;
+            font-weight: 400;
+            color: var(--charcoal);
+            line-height: 1;
+        }
+
+        .treatment-card.featured .treatment-price {
+            color: var(--cream);
+        }
+
+        .treatment-duration {
+            display: flex;
+            align-items: center;
+            gap: var(--space-8);
+            margin-top: var(--space-12);
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .treatment-card.featured .treatment-duration {
+            color: rgba(250, 247, 244, 0.6);
+        }
+
+        .treatment-duration svg {
+            width: 16px;
+            height: 16px;
+            opacity: 0.6;
+        }
+
+        .treatment-features {
+            padding: var(--space-40);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .treatment-features-list {
+            list-style: none;
+        }
+
+        .treatment-features-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-16);
+            padding: var(--space-12) 0;
+            font-size: 14px;
+            color: var(--text-medium);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .treatment-card.featured .treatment-features-list li {
+            color: rgba(250, 247, 244, 0.8);
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .treatment-features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-arrow {
+            color: var(--rose);
+            font-size: 12px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        /* ============================================
+           WHY COA - NEW SECTION
+           ============================================ */
+        .why-coa {
+            background: linear-gradient(180deg, var(--cream-warm) 0%, var(--cream) 100%);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-24);
+        }
+
+        .why-card {
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: var(--space-40);
+            text-align: center;
+            transition: all var(--duration-slow) var(--ease-out);
+        }
+
+        .why-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(106, 59, 51, 0.08);
+            border-color: transparent;
+        }
+
+        .why-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto var(--space-24);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--cream-warm);
+            border-radius: 50%;
+            color: var(--terracotta);
+        }
+
+        .why-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .why-title {
+            font-family: var(--font-display);
+            font-size: 22px;
+            color: var(--charcoal);
+            margin-bottom: var(--space-12);
+        }
+
+        .why-text {
+            font-size: 14px;
+            color: var(--text-medium);
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           PACKAGES - REDESIGNED
+           ============================================ */
+        .packages {
+            background: var(--cream);
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-20);
+        }
+
+        .package-card {
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: var(--space-32);
+            display: flex;
+            flex-direction: column;
+            transition: all var(--duration-slow) var(--ease-out);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .package-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--rose);
+            transform: scaleX(0);
+            transition: transform var(--duration-normal) var(--ease-out);
+        }
+
+        .package-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .package-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(106, 59, 51, 0.08);
+            border-color: transparent;
+        }
+
+        .package-card.featured {
+            background: var(--terracotta);
+            border-color: var(--terracotta);
+        }
+
+        .package-card.featured::before {
+            background: var(--rose-light);
+            transform: scaleX(1);
+        }
+
+        .package-card.featured:hover {
+            box-shadow: 0 30px 60px rgba(106, 59, 51, 0.25);
+        }
+
+        .package-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: var(--space-24);
+        }
+
+        .package-name {
+            font-family: var(--font-display);
+            font-size: 28px;
+            font-style: italic;
+            color: var(--terracotta);
+        }
+
+        .package-card.featured .package-name {
+            color: var(--cream);
+        }
+
+        .package-price {
+            text-align: right;
+        }
+
+        .package-amount {
+            font-family: var(--font-display);
+            font-size: 32px;
+            font-weight: 500;
+            color: var(--charcoal);
+        }
+
+        .package-card.featured .package-amount {
+            color: var(--cream);
+        }
+
+        .package-period {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .package-card.featured .package-period {
+            color: rgba(250, 247, 244, 0.6);
+        }
+
+        .package-desc {
+            font-size: 14px;
+            color: var(--text-medium);
+            line-height: 1.7;
+            margin-bottom: var(--space-24);
+            padding-bottom: var(--space-24);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .package-card.featured .package-desc {
+            color: rgba(250, 247, 244, 0.7);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .package-features {
+            list-style: none;
+            flex: 1;
+            margin-bottom: var(--space-24);
+        }
+
+        .package-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-12);
+            font-size: 13px;
+            color: var(--text-medium);
+            padding: var(--space-8) 0;
+        }
+
+        .package-card.featured .package-features li {
+            color: rgba(250, 247, 244, 0.8);
+        }
+
+        .package-features li::before {
+            content: '→';
+            color: var(--rose);
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        .package-btn {
+            display: block;
+            width: 100%;
+            padding: var(--space-16);
+            border: 1px solid var(--terracotta);
+            border-radius: 8px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            color: var(--terracotta);
+            background: transparent;
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+
+        .package-btn:hover {
+            background: var(--terracotta);
+            color: var(--cream);
+        }
+
+        .package-card.featured .package-btn {
+            border-color: var(--cream);
+            color: var(--cream);
+        }
+
+        .package-card.featured .package-btn:hover {
+            background: var(--cream);
+            color: var(--terracotta);
+        }
+
+        /* ============================================
+           EXPERIENCE SECTION - NEW
+           ============================================ */
+        .experience {
+            background: var(--charcoal);
+            color: var(--cream);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1200&h=1000&fit=crop') center/cover;
+            opacity: 0.3;
+        }
+
+        .experience-inner {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-96);
+            align-items: center;
+        }
+
+        .experience-content {
+            max-width: 500px;
+        }
+
+        .experience .section-eyebrow {
+            color: var(--rose);
+            text-align: left;
+        }
+
+        .experience .section-title {
+            color: var(--cream);
+            text-align: left;
+            margin-bottom: var(--space-32);
+        }
+
+        .experience .section-title em {
+            color: var(--rose);
+        }
+
+        .experience-text {
+            font-size: 16px;
+            color: rgba(250, 247, 244, 0.8);
+            line-height: 1.9;
+            margin-bottom: var(--space-24);
+        }
+
+        .experience-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-24);
+            margin-top: var(--space-48);
+        }
+
+        .exp-feature {
+            padding: var(--space-24);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+        }
+
+        .exp-feature-number {
+            font-family: var(--font-display);
+            font-size: 40px;
+            color: var(--rose);
+            margin-bottom: var(--space-8);
+        }
+
+        .exp-feature-label {
+            font-size: 13px;
+            color: rgba(250, 247, 244, 0.6);
+        }
+
+        /* ============================================
+           TESTIMONIALS
+           ============================================ */
+        .testimonials {
+            background: var(--cream-warm);
+        }
+
+        .testimonials-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .testimonial-slider {
+            position: relative;
+            min-height: 300px;
+        }
+
+        .testimonial-slide {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all var(--duration-slow) var(--ease-out);
+            pointer-events: none;
+        }
+
+        .testimonial-slide.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .testimonial-quote {
+            font-family: var(--font-display);
+            font-size: clamp(22px, 3vw, 32px);
+            font-style: italic;
+            color: var(--charcoal);
+            line-height: 1.5;
+            margin-bottom: var(--space-32);
+        }
+
+        .testimonial-author {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-4);
+        }
+
+        .testimonial-name {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--charcoal);
+        }
+
+        .testimonial-role {
+            font-size: 13px;
+            color: var(--rose);
+        }
+
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-8);
+            margin-top: var(--space-48);
+        }
+
+        .testimonial-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--sand);
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+
+        .testimonial-dot:hover {
+            background: var(--rose-pale);
+        }
+
+        .testimonial-dot.active {
+            background: var(--terracotta);
+            transform: scale(1.3);
+        }
+
+        /* ============================================
+           DUAL MARQUEE - CROSS SCROLLING
+           ============================================ */
+        .dual-marquee {
+            background: var(--cream-warm);
+            padding: var(--space-48) 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .dual-marquee::before,
+        .dual-marquee::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 150px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .dual-marquee::before {
+            left: 0;
+            background: linear-gradient(90deg, var(--cream-warm) 0%, transparent 100%);
+        }
+
+        .dual-marquee::after {
+            right: 0;
+            background: linear-gradient(-90deg, var(--cream-warm) 0%, transparent 100%);
+        }
+
+        .marquee-row {
+            display: flex;
+            margin-bottom: var(--space-16);
+        }
+
+        .marquee-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .marquee-row-inner {
+            display: flex;
+            flex-shrink: 0;
+        }
+
+        .marquee-row.left .marquee-row-inner {
+            animation: scrollLeft 50s linear infinite;
+        }
+
+        .marquee-row.right .marquee-row-inner {
+            animation: scrollRight 50s linear infinite;
+        }
+
+        @keyframes scrollLeft {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        @keyframes scrollRight {
+            0% {
+                transform: translateX(-50%);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .marquee-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-12);
+            padding: var(--space-12) var(--space-24);
+            margin: 0 var(--space-8);
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: 100px;
+            font-size: 14px;
+            color: var(--text-medium);
+            white-space: nowrap;
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+
+        .marquee-tag:hover {
+            background: var(--terracotta);
+            border-color: var(--terracotta);
+            color: var(--cream);
+            transform: scale(1.05);
+        }
+
+        .marquee-tag-icon {
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--cream-warm);
+            border-radius: 50%;
+            font-size: 10px;
+            color: var(--terracotta);
+        }
+
+        .marquee-tag:hover .marquee-tag-icon {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--cream);
+        }
+
+        /* ============================================
+           CONTACT - REDESIGNED
+           ============================================ */
+        .contact {
+            background: var(--cream);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            min-height: 700px;
+            border-radius: 32px;
+            overflow: hidden;
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            box-shadow: 0 40px 80px rgba(106, 59, 51, 0.06);
+        }
+
+        .contact-visual {
+            position: relative;
+            background: var(--charcoal);
+            padding: var(--space-64);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+
+        .contact-visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&h=1000&fit=crop') center/cover;
+            opacity: 0.15;
+        }
+
+        .contact-visual-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-visual .section-eyebrow {
+            color: var(--rose);
+            text-align: left;
+            margin-bottom: var(--space-16);
+        }
+
+        .contact-visual .section-title {
+            color: var(--cream);
+            text-align: left;
+            font-size: clamp(36px, 4vw, 48px);
+            margin-bottom: var(--space-24);
+        }
+
+        .contact-visual .section-title em {
+            color: var(--rose);
+        }
+
+        .contact-tagline {
+            font-size: 16px;
+            color: rgba(250, 247, 244, 0.7);
+            line-height: 1.8;
+            max-width: 360px;
+        }
+
+        .contact-info-cards {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-16);
+        }
+
+        .contact-info-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: var(--space-24);
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+
+        .contact-info-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .contact-info-card-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--terracotta);
+            border-radius: 10px;
+            margin-bottom: var(--space-16);
+        }
+
+        .contact-info-card-icon svg {
+            width: 18px;
+            height: 18px;
+            color: var(--cream);
+        }
+
+        .contact-info-card-label {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--rose);
+            margin-bottom: var(--space-8);
+        }
+
+        .contact-info-card-value {
+            font-size: 15px;
+            color: var(--cream);
+            line-height: 1.5;
+        }
+
+        .contact-form-section {
+            padding: var(--space-64);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-form-header {
+            margin-bottom: var(--space-40);
+        }
+
+        .contact-form-title {
+            font-family: var(--font-display);
+            font-size: 28px;
+            color: var(--charcoal);
+            margin-bottom: var(--space-12);
+        }
+
+        .contact-form-subtitle {
+            font-size: 15px;
+            color: var(--text-medium);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-20);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-16);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-label {
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: var(--space-8);
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: var(--space-16) var(--space-20);
+            background: var(--cream-warm);
+            border: 1px solid transparent;
+            border-radius: 12px;
+            color: var(--text-dark);
+            font-family: inherit;
+            font-size: 15px;
+            transition: all var(--duration-fast);
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--terracotta);
+            background: var(--white);
+            box-shadow: 0 0 0 4px rgba(106, 59, 51, 0.08);
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-24);
+            margin-top: var(--space-8);
+        }
+
+        .form-note {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .form-note a {
+            color: var(--terracotta);
+            text-decoration: underline;
+        }
+
+        .form-submit {
+            padding: var(--space-16) var(--space-40);
+            background: var(--terracotta);
+            border: none;
+            border-radius: 100px;
+            color: var(--cream);
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: all var(--duration-normal) var(--ease-out);
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-12);
+        }
+
+        .form-submit:hover {
+            background: var(--charcoal);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(106, 59, 51, 0.2);
+        }
+
+        .form-submit svg {
+            width: 16px;
+            height: 16px;
+            transition: transform var(--duration-normal) var(--ease-out);
+        }
+
+        .form-submit:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* Social links in contact */
+        .contact-social {
+            display: flex;
+            gap: var(--space-12);
+            margin-top: var(--space-32);
+        }
+
+        .contact-social-link {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: var(--cream);
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+
+        .contact-social-link:hover {
+            background: var(--rose);
+            border-color: var(--rose);
+            transform: translateY(-4px);
+        }
+
+        .contact-social-link svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            background: var(--charcoal);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: var(--space-64);
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-8);
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 24px;
+            color: var(--cream);
+            letter-spacing: 0.2em;
+        }
+
+        .footer-tagline {
+            font-size: 13px;
+            font-style: italic;
+            color: var(--rose);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-40);
+        }
+
+        .footer-link {
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(250, 247, 244, 0.5);
+            transition: color var(--duration-fast);
+        }
+
+        .footer-link:hover {
+            color: var(--cream);
+        }
+
+        .footer-copyright {
+            font-size: 12px;
+            color: rgba(250, 247, 244, 0.3);
+        }
+
+        /* ============================================
+           ANIMATIONS
+           ============================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all var(--duration-slower) var(--ease-out);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: all var(--duration-slower) var(--ease-out);
+        }
+
+        .reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: all var(--duration-slower) var(--ease-out);
+        }
+
+        .reveal-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Stagger */
+        [data-delay="1"] {
+            transition-delay: 100ms;
+        }
+
+        [data-delay="2"] {
+            transition-delay: 200ms;
+        }
+
+        [data-delay="3"] {
+            transition-delay: 300ms;
+        }
+
+        [data-delay="4"] {
+            transition-delay: 400ms;
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 1200px) {
+
+            .packages-grid,
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .treatment-card {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .treatment-features {
+                grid-column: 1 / -1;
+                border-top: 1px solid var(--border-light);
+            }
+        }
+
+        @media (max-width: 968px) {
+            .nav {
+                padding: var(--space-16) var(--space-24);
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .section {
+                padding: var(--space-80) var(--space-24);
+            }
+
+            .about-grid,
+            .contact-grid,
+            .experience-inner {
+                grid-template-columns: 1fr;
+                gap: var(--space-48);
+            }
+
+            .treatment-card {
+                grid-template-columns: 1fr;
+            }
+
+            .treatment-main,
+            .treatment-price-section {
+                border-right: none;
+                border-bottom: 1px solid var(--border-light);
+            }
+
+            .hero-gallery {
+                flex-wrap: wrap;
+                gap: var(--space-12);
+            }
+
+            .gallery-item {
+                margin-bottom: 0 !important;
+                transform: none !important;
+            }
+
+            .gallery-item:nth-child(1),
+            .gallery-item:nth-child(5) {
+                width: 80px;
+                height: 110px;
+            }
+
+            .gallery-item:nth-child(2),
+            .gallery-item:nth-child(4) {
+                width: 95px;
+                height: 135px;
+            }
+
+            .gallery-item:nth-child(3) {
+                width: 110px;
+                height: 160px;
+            }
+        }
+
+        @media (max-width: 640px) {
+
+            .packages-grid,
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-features {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-visual {
+                padding: var(--space-40);
+            }
+
+            .contact-info-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form-section {
+                padding: var(--space-40);
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .form-footer {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                gap: var(--space-32);
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .dual-marquee {
+                padding: var(--space-32) 0;
+            }
+
+            .marquee-tag {
+                padding: var(--space-8) var(--space-16);
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <ul class="nav-links">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#treatments" class="nav-link">Treatments</a></li>
+            </ul>
+            <a href="#" class="logo">COA<span class="logo-dot"></span></a>
+            <ul class="nav-links">
+                <li><a href="#packages" class="nav-link">Membership</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <a href="#contact" class="nav-cta">Book Now</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <p class="hero-eyebrow">Wellness Lounge & Biohacking Clinic · Pune</p>
+            <h1 class="hero-title">Where Your Best<br><em>Life Begins</em></h1>
+            <p class="hero-desc">Your sanctuary for transformation, optimization, and timeless vitality. Experience
+                precision wellness backed by science.</p>
+            <a href="#contact" class="hero-cta">
+                Book Consultation
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M5 12h14" />
+                </svg>
+            </a>
+        </div>
+        <div class="hero-gallery">
+            <div class="gallery-item"><img
+                    src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&h=600&fit=crop" alt="Massage">
+            </div>
+            <div class="gallery-item"><img
+                    src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=400&h=600&fit=crop" alt="Spa">
+            </div>
+            <div class="gallery-item"><img
+                    src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=400&h=600&fit=crop"
+                    alt="Wellness"></div>
+            <div class="gallery-item"><img
+                    src="https://images.unsplash.com/photo-1552693673-1bf958298935?w=400&h=600&fit=crop"
+                    alt="Relaxation"></div>
+            <div class="gallery-item"><img
+                    src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=400&h=600&fit=crop"
+                    alt="IV Therapy"></div>
+        </div>
+    </section>
+
+    <!-- Info Strip -->
+    <div class="info-strip">
+        <div class="info-strip-inner">
+            <div class="info-strip-content">
+                <div class="info-item"><span class="info-text">Biohacking</span><span class="info-dot"></span></div>
+                <div class="info-item"><span class="info-text">NAD+ Therapy</span><span class="info-dot"></span></div>
+                <div class="info-item"><span class="info-text">Neurofeedback</span><span class="info-dot"></span></div>
+                <div class="info-item"><span class="info-text">IV Infusions</span><span class="info-dot"></span></div>
+                <div class="info-item"><span class="info-text">PRP Therapy</span><span class="info-dot"></span></div>
+                <div class="info-item"><span class="info-text">Longevity</span><span class="info-dot"></span></div>
+            </div>
+            <div class="info-strip-content">
+                <div class="info-item"><span class="info-text">Biohacking</span><span class="info-dot"></span></div>
+                <div class="info-item"><span class="info-text">NAD+ Therapy</span><span class="info-dot"></span></div>
+                <div class="info-item"><span class="info-text">Neurofeedback</span><span class="info-dot"></span></div>
+                <div class="info-item"><span class="info-text">IV Infusions</span><span class="info-dot"></span></div>
+                <div class="info-item"><span class="info-text">PRP Therapy</span><span class="info-dot"></span></div>
+                <div class="info-item"><span class="info-text">Longevity</span><span class="info-dot"></span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About -->
+    <section class="section about" id="about">
+        <div class="section-inner">
+            <div class="about-grid">
+                <div class="about-visual reveal-left">
+                    <div class="about-img-main">
+                        <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&h=1000&fit=crop"
+                            alt="COA Interior">
+                    </div>
+                    <div class="about-img-float">
+                        <img src="https://images.unsplash.com/photo-1552693673-1bf958298935?w=400&h=400&fit=crop"
+                            alt="Wellness Detail">
+                    </div>
+                </div>
+                <div class="about-content reveal-right">
+                    <p class="section-eyebrow">Our Philosophy</p>
+                    <h2 class="section-title">Where Science<br><em>Meets Soul</em></h2>
+                    <blockquote class="about-quote">"What if we could feel better at 45 than we did at 25?"</blockquote>
+                    <p class="about-text">COA emerged from years of witnessing brilliant, ambitious people settling for
+                        "fine" when they could be thriving. We believe your body is the smartest technology you'll ever
+                        own.</p>
+                    <p class="about-text">Give it the right inputs—targeted nutrition, cellular repair, mental
+                        optimization—and it becomes capable of extraordinary things.</p>
+                    <div class="about-signature">
+                        <div class="signature-img">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop"
+                                alt="Helen Grant">
+                        </div>
+                        <div>
+                            <p class="signature-name">Helen Grant</p>
+                            <p class="signature-role">Founder & Visionary</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why COA -->
+    <section class="section why-coa">
+        <div class="section-inner">
+            <div class="section-header reveal">
+                <p class="section-eyebrow">Why Choose Us</p>
+                <h2 class="section-title">The COA <em>Difference</em></h2>
+            </div>
+            <div class="why-grid">
+                <div class="why-card reveal" data-delay="1">
+                    <div class="why-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path
+                                d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z" />
+                            <path
+                                d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z" />
+                        </svg>
+                    </div>
+                    <h3 class="why-title">Personalized Protocols</h3>
+                    <p class="why-text">Every treatment is tailored to your unique biology through comprehensive testing
+                        and analysis.</p>
+                </div>
+                <div class="why-card reveal" data-delay="2">
+                    <div class="why-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path
+                                d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83" />
+                        </svg>
+                    </div>
+                    <h3 class="why-title">Evidence-Based</h3>
+                    <p class="why-text">Every therapy we offer is grounded in scientific research and proven clinical
+                        outcomes.</p>
+                </div>
+                <div class="why-card reveal" data-delay="3">
+                    <div class="why-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path
+                                d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+                        </svg>
+                    </div>
+                    <h3 class="why-title">Luxury Experience</h3>
+                    <p class="why-text">Healing should feel indulgent. Our terracotta-toned sanctuary nurtures your
+                        nervous system.</p>
+                </div>
+                <div class="why-card reveal" data-delay="4">
+                    <div class="why-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87m-3-12a4 4 0 0 1 0 7.75" />
+                        </svg>
+                    </div>
+                    <h3 class="why-title">Expert Team</h3>
+                    <p class="why-text">Multi-specialty dream team: clinical psychologist, nutritionist, dermatologist,
+                        and therapists.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatments - Redesigned -->
+    <section class="section treatments" id="treatments">
+        <div class="section-inner">
+            <div class="section-header reveal">
+                <p class="section-eyebrow">Our Treatments</p>
+                <h2 class="section-title">Our <em>Signature</em> Therapies</h2>
+                <p class="section-desc">Precision wellness designed to transform how you feel, think, and live.</p>
+            </div>
+            <div class="treatments-grid">
+                <!-- Treatment 1 -->
+                <div class="treatment-card reveal">
+                    <div class="treatment-main">
+                        <div>
+                            <h3 class="treatment-name">NAD+ Therapy</h3>
+                            <p class="treatment-desc">The ultimate anti-aging molecule. Boost cellular energy, repair
+                                DNA, enhance neurological health, and reverse your biological clock.</p>
+                        </div>
+                        <button class="treatment-btn">Book Your Session Now</button>
+                    </div>
+                    <div class="treatment-price-section">
+                        <span class="treatment-price">₹9,000</span>
+                        <span class="treatment-duration">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 6v6l4 2" />
+                            </svg>
+                            90 minutes
+                        </span>
+                    </div>
+                    <div class="treatment-features">
+                        <ul class="treatment-features-list">
+                            <li><span class="feature-arrow">→</span> Premium NAD+ IV infusion</li>
+                            <li><span class="feature-arrow">→</span> Cellular energy restoration</li>
+                            <li><span class="feature-arrow">→</span> Anti-aging at molecular level</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Treatment 2 -->
+                <div class="treatment-card reveal">
+                    <div class="treatment-main">
+                        <div>
+                            <h3 class="treatment-name">Neurofeedback</h3>
+                            <p class="treatment-desc">Train your brain for peak performance. Evidence-based protocols to
+                                rewire neural pathways for focus, calm, and resilience.</p>
+                        </div>
+                        <button class="treatment-btn">Book Your Session Now</button>
+                    </div>
+                    <div class="treatment-price-section">
+                        <span class="treatment-price">₹3,000</span>
+                        <span class="treatment-duration">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 6v6l4 2" />
+                            </svg>
+                            60 minutes
+                        </span>
+                    </div>
+                    <div class="treatment-features">
+                        <ul class="treatment-features-list">
+                            <li><span class="feature-arrow">→</span> Brain mapping & analysis</li>
+                            <li><span class="feature-arrow">→</span> Cognitive enhancement protocol</li>
+                            <li><span class="feature-arrow">→</span> Stress & anxiety reduction</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Treatment 3 - Featured -->
+                <div class="treatment-card featured reveal">
+                    <div class="treatment-main">
+                        <div>
+                            <h3 class="treatment-name">Elite Biohacking</h3>
+                            <p class="treatment-desc">Our signature full-day immersive experience. Comprehensive
+                                assessment, multiple therapies, and personalized longevity roadmap.</p>
+                        </div>
+                        <button class="treatment-btn">Book Your Session Now</button>
+                    </div>
+                    <div class="treatment-price-section">
+                        <span class="treatment-price">₹35,000</span>
+                        <span class="treatment-duration">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 6v6l4 2" />
+                            </svg>
+                            Full day
+                        </span>
+                    </div>
+                    <div class="treatment-features">
+                        <ul class="treatment-features-list">
+                            <li><span class="feature-arrow">→</span> Complete blood panel analysis</li>
+                            <li><span class="feature-arrow">→</span> NAD+ & vitamin infusions</li>
+                            <li><span class="feature-arrow">→</span> Personalized wellness roadmap</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Treatment 4 -->
+                <div class="treatment-card reveal">
+                    <div class="treatment-main">
+                        <div>
+                            <h3 class="treatment-name">PRP Therapy</h3>
+                            <p class="treatment-desc">Harness your body's healing power. Platelet-rich plasma for face
+                                rejuvenation or hair restoration with visible results.</p>
+                        </div>
+                        <button class="treatment-btn">Book Your Session Now</button>
+                    </div>
+                    <div class="treatment-price-section">
+                        <span class="treatment-price">₹9,000</span>
+                        <span class="treatment-duration">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 6v6l4 2" />
+                            </svg>
+                            75 minutes
+                        </span>
+                    </div>
+                    <div class="treatment-features">
+                        <ul class="treatment-features-list">
+                            <li><span class="feature-arrow">→</span> Blood draw & plasma extraction</li>
+                            <li><span class="feature-arrow">→</span> Micro-injection treatment</li>
+                            <li><span class="feature-arrow">→</span> Collagen stimulation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="section experience">
+        <div class="section-inner">
+            <div class="experience-inner">
+                <div class="experience-content reveal-left">
+                    <p class="section-eyebrow">The Experience</p>
+                    <h2 class="section-title">Step Into<br><em>Your Sanctuary</em></h2>
+                    <p class="experience-text">This isn't a sterile medical facility. It's a lounge where entrepreneurs
+                        sip adaptogenic elixirs between NAD+ drips, where athletes recover with cutting-edge therapies,
+                        where busy parents find their centre again.</p>
+                    <p class="experience-text">From the moment you enter our terracotta-toned sanctuary, you'll feel
+                        your nervous system soften.</p>
+                    <div class="experience-features">
+                        <div class="exp-feature">
+                            <p class="exp-feature-number">500+</p>
+                            <p class="exp-feature-label">Clients transformed</p>
+                        </div>
+                        <div class="exp-feature">
+                            <p class="exp-feature-number">7 yrs</p>
+                            <p class="exp-feature-label">Avg. bio age reduction</p>
+                        </div>
+                        <div class="exp-feature">
+                            <p class="exp-feature-number">98%</p>
+                            <p class="exp-feature-label">Client satisfaction</p>
+                        </div>
+                        <div class="exp-feature">
+                            <p class="exp-feature-number">4.9★</p>
+                            <p class="exp-feature-label">Average rating</p>
+                        </div>
+                    </div>
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages -->
+    <section class="section packages" id="packages">
+        <div class="section-inner">
+            <div class="section-header reveal">
+                <p class="section-eyebrow">Membership</p>
+                <h2 class="section-title">Our <em>Packages</em></h2>
+                <p class="section-desc">Subscription wellness for consistent, transformative results.</p>
+            </div>
+            <div class="packages-grid">
+                <div class="package-card reveal" data-delay="1">
+                    <div class="package-header">
+                        <h3 class="package-name">Reset</h3>
+                        <div class="package-price">
+                            <p class="package-amount">₹18,000</p>
+                            <p class="package-period">per month</p>
+                        </div>
+                    </div>
+                    <p class="package-desc">Perfect for first-timers or those recovering from burnout seeking a reset.
+                    </p>
+                    <ul class="package-features">
+                        <li>1× Detox IV Infusion</li>
+                        <li>1× Gut Reset Nutrition</li>
+                        <li>1× Therapeutic Massage</li>
+                        <li>1× Psychology Session</li>
+                        <li>20% off add-ons</li>
+                    </ul>
+                    <a href="#contact" class="package-btn">Get Started</a>
+                </div>
+                <div class="package-card reveal" data-delay="2">
+                    <div class="package-header">
+                        <h3 class="package-name">Perform</h3>
+                        <div class="package-price">
+                            <p class="package-amount">₹28,000</p>
+                            <p class="package-period">per month</p>
+                        </div>
+                    </div>
+                    <p class="package-desc">For entrepreneurs and athletes demanding peak mental and physical
+                        performance.</p>
+                    <ul class="package-features">
+                        <li>2× Premium IVs (NAD+ & Brain)</li>
+                        <li>1× Neurofeedback Session</li>
+                        <li>1× Nutrition Consultation</li>
+                        <li>1× Therapeutic Massage</li>
+                        <li>Sleep Optimization Toolkit</li>
+                    </ul>
+                    <a href="#contact" class="package-btn">Get Started</a>
+                </div>
+                <div class="package-card reveal" data-delay="3">
+                    <div class="package-header">
+                        <h3 class="package-name">Radiance</h3>
+                        <div class="package-price">
+                            <p class="package-amount">₹32,000</p>
+                            <p class="package-period">per month</p>
+                        </div>
+                    </div>
+                    <p class="package-desc">Anti-aging and skin-focused for those seeking visible rejuvenation.</p>
+                    <ul class="package-features">
+                        <li>2× Beauty/NAD+ IVs</li>
+                        <li>1× PRP or Microneedling</li>
+                        <li>1× Dermatology Consult</li>
+                        <li>1× Skin Nutrition Plan</li>
+                        <li>1× LED Facial Treatment</li>
+                    </ul>
+                    <a href="#contact" class="package-btn">Get Started</a>
+                </div>
+                <div class="package-card featured reveal" data-delay="4">
+                    <div class="package-header">
+                        <h3 class="package-name">Elite</h3>
+                        <div class="package-price">
+                            <p class="package-amount">₹1,20,000</p>
+                            <p class="package-period">per month</p>
+                        </div>
+                    </div>
+                    <p class="package-desc">Ultra-premium full optimization for those who accept nothing less than
+                        extraordinary.</p>
+                    <ul class="package-features">
+                        <li>Monthly Blood Panels</li>
+                        <li>4× Premium IV Infusions</li>
+                        <li>Advanced Dermatology</li>
+                        <li>Unlimited Massage Access</li>
+                        <li>Priority Concierge</li>
+                    </ul>
+                    <a href="#contact" class="package-btn">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section testimonials" id="testimonials">
+        <div class="section-inner">
+            <div class="section-header reveal">
+                <p class="section-eyebrow">Testimonials</p>
+                <h2 class="section-title">Real People. <em>Real Results.</em></h2>
+            </div>
+            <div class="testimonials-container">
+                <div class="testimonial-slider">
+                    <div class="testimonial-slide active">
+                        <p class="testimonial-quote">"After just 3 months on the PERFORM package, I have more energy
+                            than I did in my 20s. The NAD+ therapy is like hitting a reset button on your entire
+                            system."</p>
+                        <div class="testimonial-author">
+                            <span class="testimonial-name">Rajesh M.</span>
+                            <span class="testimonial-role">Tech Entrepreneur, Mumbai</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <p class="testimonial-quote">"COA's combination of IV therapy, massage, and functional nutrition
+                            has cut my recovery time in half. I'm hitting PRs I thought were impossible at 38."</p>
+                        <div class="testimonial-author">
+                            <span class="testimonial-name">Priya S.</span>
+                            <span class="testimonial-role">Marathon Runner & Fitness Coach</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <p class="testimonial-quote">"My biological age dropped 7 years in 6 months. My skin looks
+                            better than it did at 40. This isn't anti-aging—it's age optimization."</p>
+                        <div class="testimonial-author">
+                            <span class="testimonial-name">Kavita R.</span>
+                            <span class="testimonial-role">Business Owner</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <p class="testimonial-quote">"It's like Soho House meets a longevity clinic. The blood panels
+                            revealed exactly what my body needed. I'm completely obsessed."</p>
+                        <div class="testimonial-author">
+                            <span class="testimonial-name">Vikram D.</span>
+                            <span class="testimonial-role">Serial Entrepreneur</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-nav">
+                    <button class="testimonial-dot active" data-index="0"></button>
+                    <button class="testimonial-dot" data-index="1"></button>
+                    <button class="testimonial-dot" data-index="2"></button>
+                    <button class="testimonial-dot" data-index="3"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dual Marquee - Cross Scrolling -->
+    <section class="dual-marquee">
+        <div class="marquee-row left">
+            <div class="marquee-row-inner">
+                <span class="marquee-tag"><span class="marquee-tag-icon">✦</span> NAD+ Therapy</span>
+                <span class="marquee-tag"><span class="marquee-tag-icon">✦</span> Neurofeedback</span>
+                <span class="marquee-tag"><span class="marquee-tag-icon">✦</span> IV Infusions</span>
+                <span class="marquee-tag"><span class="marquee-tag-icon">✦</span> PRP Treatment</span>
+                <span class="marquee-tag"><span class="marquee-tag-icon">✦</span> Functional Nutrition</span>
+                <span class="marquee-tag"><span class="marquee-tag-icon">✦</span> Sleep Optimization</span>
+                <span class="marquee-tag"><span class="marquee-tag-icon">✦</span> Therapeutic Massage</span>
+                <span class="marquee-tag"><span class="marquee-tag-icon">✦</span> Gut Health Reset</span>
+            </div>
+            <div class="marquee-row-inner">
+                <span class="marquee-tag"><span class="marquee-tag-icon">✦</span> NAD+ Therapy</span>
+                <span class="marquee-tag"><span class="marquee-tag-icon">✦</span> Neurofeedback</span>
+                <span class="marquee-tag"><span class="marquee-tag-icon">✦</span> IV Infusions</span>
+                <span class="marquee-tag"><span class="marquee-tag-icon">✦</span> PRP Treatment</span>
+                <span class="marquee-tag"><span class="marquee-tag-icon">✦</span> Functional Nutrition</span>
+                <span class="marquee-tag"><span class="marquee-tag-icon">✦</span> Sleep Optimization</span>
+                <span class="marquee-tag"><span class="marquee-tag-icon">✦</span> Therapeutic Massage</span>
+                <span class="marquee-tag"><span class="marquee-tag-icon">✦</span> Gut Health Reset</span>
+            </div>
+        </div>
+        <div class="marquee-row right">
+            <div class="marquee-row-inner">
+                <span class="marquee-tag"><span class="marquee-tag-icon">✦</span> Longevity Protocols</span>
+                <span class="marquee-tag"><span class="marquee-tag-icon">✦</span> Biohacking</span>
+                <span class="marquee-tag"><span class="marquee-tag-icon">✦</span> LED Light Therapy</span>
+                <span class="marquee-tag"><span class="marquee-tag-icon">✦</span> Microneedling</span>
+                <span class="marquee-tag"><span class="marquee-tag-icon">✦</span> Stress Recovery</span>
+                <span class="marquee-tag"><span class="marquee-tag-icon">✦</span> Brain Optimization</span>
+                <span class="marquee-tag"><span class="marquee-tag-icon">✦</span> Beauty Drips</span>
+                <span class="marquee-tag"><span class="marquee-tag-icon">✦</span> Cellular Repair</span>
+            </div>
+            <div class="marquee-row-inner">
+                <span class="marquee-tag"><span class="marquee-tag-icon">✦</span> Longevity Protocols</span>
+                <span class="marquee-tag"><span class="marquee-tag-icon">✦</span> Biohacking</span>
+                <span class="marquee-tag"><span class="marquee-tag-icon">✦</span> LED Light Therapy</span>
+                <span class="marquee-tag"><span class="marquee-tag-icon">✦</span> Microneedling</span>
+                <span class="marquee-tag"><span class="marquee-tag-icon">✦</span> Stress Recovery</span>
+                <span class="marquee-tag"><span class="marquee-tag-icon">✦</span> Brain Optimization</span>
+                <span class="marquee-tag"><span class="marquee-tag-icon">✦</span> Beauty Drips</span>
+                <span class="marquee-tag"><span class="marquee-tag-icon">✦</span> Cellular Repair</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact - Redesigned -->
+    <section class="section contact" id="contact">
+        <div class="section-inner">
+            <div class="contact-wrapper">
+                <div class="contact-visual">
+                    <div class="contact-visual-content">
+                        <p class="section-eyebrow">Get In Touch</p>
+                        <h2 class="section-title">Your Sanctuary<br><em>Awaits</em></h2>
+                        <p class="contact-tagline">Step into Pune's first luxury wellness lounge—where terracotta-toned
+                            serenity meets cutting-edge science.</p>
+
+                        <div class="contact-social">
+                            <a href="#" class="contact-social-link" aria-label="Instagram">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" />
+                                    <circle cx="12" cy="12" r="4" />
+                                    <circle cx="18" cy="6" r="1.5" fill="currentColor" />
+                                </svg>
+                            </a>
+                            <a href="#" class="contact-social-link" aria-label="Facebook">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                                </svg>
+                            </a>
+                            <a href="#" class="contact-social-link" aria-label="WhatsApp">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path
+                                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- <div class="contact-info-cards">
+                        <div class="contact-info-card">
+                            <div class="contact-info-card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                            </div>
+                            <p class="contact-info-card-label">Location</p>
+                            <p class="contact-info-card-value">Pune, Maharashtra<br>India</p>
+                        </div>
+                        <div class="contact-info-card">
+                            <div class="contact-info-card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M12 6v6l4 2"/>
+                                </svg>
+                            </div>
+                            <p class="contact-info-card-label">Hours</p>
+                            <p class="contact-info-card-value">Mon–Sat: 9AM – 8PM<br>Sun: 10AM – 6PM</p>
+                        </div>
+                        <div class="contact-info-card">
+                            <div class="contact-info-card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <path d="m22 6-10 7L2 6"/>
+                                </svg>
+                            </div>
+                            <p class="contact-info-card-label">Email</p>
+                            <p class="contact-info-card-value">hello@<br>coawellness.com</p>
+                        </div>
+                        <div class="contact-info-card">
+                            <div class="contact-info-card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                            </div>
+                            <p class="contact-info-card-label">Phone</p>
+                            <p class="contact-info-card-value">+91 (000)<br>000-0000</p>
+                        </div>
+                    </div> -->
+                </div>
+
+                <div class="contact-form-section">
+                    <div class="contact-form-header">
+                        <h3 class="contact-form-title">Book Your Consultation</h3>
+                        <p class="contact-form-subtitle">Fill out the form and our wellness concierge will reach out
+                            within 24 hours.</p>
+                    </div>
+
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">First Name</label>
+                                <input type="text" class="form-input" placeholder="Your first name" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Last Name</label>
+                                <input type="text" class="form-input" placeholder="Your last name" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-input" placeholder="your@email.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Phone</label>
+                                <input type="tel" class="form-input" placeholder="+91" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">What are your wellness goals?</label>
+                            <textarea class="form-textarea"
+                                placeholder="Tell us about your health goals, concerns, or what you're hoping to achieve..."></textarea>
+                        </div>
+                        <div class="form-footer">
+                            <p class="form-note">By submitting, you agree to our <a href="#">Privacy Policy</a></p>
+                            <button type="submit" class="form-submit">
+                                Send Message
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <p class="footer-logo">COA</p>
+                <p class="footer-tagline">Wellness Lounge & Biohacking Clinic</p>
+            </div>
+            <div class="footer-links">
+                <a href="#about" class="footer-link">About</a>
+                <a href="#treatments" class="footer-link">Treatments</a>
+                <a href="#packages" class="footer-link">Membership</a>
+                <a href="#contact" class="footer-link">Contact</a>
+            </div>
+            <p class="footer-copyright">© 2026 COA Wellness. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -80px 0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navigation scroll effect
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 60);
+        }, { passive: true });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = nav.offsetHeight + 20;
+                    const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Testimonials slider
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const dots = document.querySelectorAll('.testimonial-dot');
+        let current = 0;
+        let autoPlay;
+
+        function showSlide(index) {
+            slides.forEach((s, i) => s.classList.toggle('active', i === index));
+            dots.forEach((d, i) => d.classList.toggle('active', i === index));
+            current = index;
+        }
+
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => {
+                showSlide(i);
+                resetAutoPlay();
+            });
+        });
+
+        function nextSlide() {
+            showSlide((current + 1) % slides.length);
+        }
+
+        function resetAutoPlay() {
+            clearInterval(autoPlay);
+            autoPlay = setInterval(nextSlide, 5000);
+        }
+
+        autoPlay = setInterval(nextSlide, 5000);
+
+        // Form handling
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const btn = this.querySelector('.form-submit');
+            btn.textContent = 'Message Sent ✓';
+            setTimeout(() => {
+                btn.textContent = 'Book Consultation';
+                this.reset();
+            }, 3000);
+        });
+
+        // Parallax on hero
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    const scrolled = window.pageYOffset;
+                    const hero = document.querySelector('.hero-content');
+                    const gallery = document.querySelector('.hero-gallery');
+
+                    if (scrolled < 600) {
+                        const opacity = 1 - scrolled / 500;
+                        const y = scrolled * 0.35;
+
+                        if (hero) {
+                            hero.style.transform = `translateY(${y}px)`;
+                            hero.style.opacity = Math.max(0, opacity);
+                        }
+                        if (gallery) {
+                            gallery.style.transform = `translateY(${y * 0.5}px)`;
+                            gallery.style.opacity = Math.max(0, opacity);
+                        }
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+
+        // Hover effects for gallery items
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('mouseenter', () => {
+                galleryItems.forEach((otherItem, otherIndex) => {
+                    if (otherIndex !== index) {
+                        otherItem.style.opacity = '0.7';
+                    }
+                });
+            });
+            item.addEventListener('mouseleave', () => {
+                galleryItems.forEach(otherItem => {
+                    otherItem.style.opacity = '1';
+                });
+            });
+        });
+
+        // Treatment card button interactions
+        document.querySelectorAll('.treatment-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                    const offset = nav.offsetHeight + 20;
+                    const top = contactSection.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Package card button interactions
+        document.querySelectorAll('.package-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                    const offset = nav.offsetHeight + 20;
+                    const top = contactSection.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Add subtle mouse movement effect on hero
+        const heroSection = document.querySelector('.hero');
+        if (heroSection) {
+            heroSection.addEventListener('mousemove', (e) => {
+                const { clientX, clientY } = e;
+                const { innerWidth, innerHeight } = window;
+
+                const xPercent = (clientX / innerWidth - 0.5) * 2;
+                const yPercent = (clientY / innerHeight - 0.5) * 2;
+
+                const heroContent = document.querySelector('.hero-content');
+                if (heroContent && window.scrollY < 100) {
+                    heroContent.style.transform = `translate(${xPercent * 5}px, ${yPercent * 5}px)`;
+                }
+            });
+
+            heroSection.addEventListener('mouseleave', () => {
+                const heroContent = document.querySelector('.hero-content');
+                if (heroContent) {
+                    heroContent.style.transform = 'translate(0, 0)';
+                }
+            });
+        }
+
+        // Preload images for smoother experience
+        const imageUrls = [
+            'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=400&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=400&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1552693673-1bf958298935?w=400&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=400&h=600&fit=crop'
+        ];
+
+        imageUrls.forEach(url => {
+            const img = new Image();
+            img.src = url;
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COA — Transform Your Being</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,700&display=swap"
+        rel="stylesheet">
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="loader-logo">COA</div>
+        <div class="loader-bar">
+            <div class="loader-progress" id="loader-progress"></div>
+        </div>
+    </div>
+
+    <!-- Global Animated Background -->
+    <div class="global-bg-elements">
+        <!-- Background shapes removed to prevent color overlay issues -->
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <div class="logo">
+                <span>COA</span>
+                <div class="logo-dot"></div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">Philosophy</a></li>
+                <li><a href="#treatments" class="nav-link">Treatments</a></li>
+                <li><a href="#packages" class="nav-link">Packages</a></li>
+                <li><a href="#testimonials" class="nav-link">Reviews</a></li>
+                <li><a href="#faq" class="nav-link">FAQ</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <a href="#book" class="nav-cta">Book Now</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <div class="hero-bg-layer"></div>
+            <div class="hero-bg-layer"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-eyebrow">
+                <span>Wellness Redefined</span>
+            </div>
+            <h1 class="hero-title">
+                <div class="line">
+                    <div class="line-inner">Transform Your</div>
+                </div>
+                <div class="line">
+                    <div class="line-inner"><em>Inner Being</em></div>
+                </div>
+            </h1>
+            <p class="hero-desc">
+                Experience the perfect fusion of ancient wisdom and modern wellness.
+                Your sanctuary for transformation, renewal, and timeless vitality awaits.
+            </p>
+            <a href="#treatments" class="hero-cta">
+                Begin Your Journey
+                <svg viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M8 0L16 8L8 16L7 15L13 9H0V7H13L7 1L8 0Z" />
+                </svg>
+            </a>
+        </div>
+
+        <!-- Hero Gallery with Parallax -->
+        <div class="hero-gallery">
+            <div class="gallery-item" data-speed="0.3">
+                <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=300&h=400&fit=crop&crop=center"
+                    alt="Spa Treatment Room">
+            </div>
+            <div class="gallery-item" data-speed="0.6">
+                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=400&fit=crop&crop=center"
+                    alt="Massage Therapy">
+            </div>
+            <div class="gallery-item" data-speed="1.0">
+                <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=300&h=400&fit=crop&crop=center"
+                    alt="Wellness Stones">
+            </div>
+            <div class="gallery-item" data-speed="0.8">
+                <img src="https://images.unsplash.com/photo-1552693673-1bf958298935?w=300&h=400&fit=crop&crop=center"
+                    alt="Aromatherapy">
+            </div>
+            <div class="gallery-item" data-speed="0.4">
+                <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=300&h=400&fit=crop&crop=center"
+                    alt="Meditation Space">
+            </div>
+        </div>
+
+        <!-- Floating elements for parallax -->
+        <div class="hero-float-elements">
+            <div class="float-element float-1"></div>
+            <div class="float-element float-2"></div>
+            <div class="float-element float-3"></div>
+        </div>
+    </section>
+
+    <!-- Info Strip -->
+    <div class="info-strip">
+        <div class="info-strip-inner">
+            <div class="info-strip-content">
+                <div class="info-item">
+                    <span class="info-text">Holistic Wellness</span>
+                    <div class="info-dot"></div>
+                </div>
+                <div class="info-item">
+                    <span class="info-text">Mind-Body Balance</span>
+                    <div class="info-dot"></div>
+                </div>
+                <div class="info-item">
+                    <span class="info-text">Transformative Healing</span>
+                    <div class="info-dot"></div>
+                </div>
+                <div class="info-item">
+                    <span class="info-text">Ancient Wisdom</span>
+                    <div class="info-dot"></div>
+                </div>
+                <div class="info-item">
+                    <span class="info-text">Modern Techniques</span>
+                    <div class="info-dot"></div>
+                </div>
+            </div>
+            <!-- Duplicate for seamless loop -->
+            <div class="info-strip-content">
+                <div class="info-item">
+                    <span class="info-text">Holistic Wellness</span>
+                    <div class="info-dot"></div>
+                </div>
+                <div class="info-item">
+                    <span class="info-text">Mind-Body Balance</span>
+                    <div class="info-dot"></div>
+                </div>
+                <div class="info-item">
+                    <span class="info-text">Transformative Healing</span>
+                    <div class="info-dot"></div>
+                </div>
+                <div class="info-item">
+                    <span class="info-text">Ancient Wisdom</span>
+                    <div class="info-dot"></div>
+                </div>
+                <div class="info-item">
+                    <span class="info-text">Modern Techniques</span>
+                    <div class="info-dot"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="section-inner">
+            <div class="about-grid">
+                <div class="about-visual">
+                    <div class="about-img-main">
+                        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&h=1000&fit=crop&crop=center"
+                            alt="Spa Treatment Room">
+                    </div>
+                    <div class="about-img-float">
+                        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=400&h=400&fit=crop&crop=center"
+                            alt="Wellness Stones">
+                    </div>
+                </div>
+                <div class="about-content">
+                    <div class="section-eyebrow">Our Philosophy</div>
+                    <h2 class="section-title">
+                        Wellness is not a destination, <em>it's a journey</em>
+                    </h2>
+                    <div class="about-quote">
+                        "True transformation begins when we align our inner wisdom with modern wellness practices."
+                    </div>
+                    <p class="about-text">
+                        At COA, we believe that every individual deserves a sanctuary where ancient healing
+                        traditions meet cutting-edge wellness technology. Our approach combines time-tested
+                        therapeutic methods with innovative treatments designed to restore balance, enhance vitality,
+                        and nurture your complete well-being.
+                    </p>
+                    <p class="about-text">
+                        Our expert practitioners guide you through personalized wellness journeys, ensuring
+                        that every treatment is tailored to your unique needs and goals.
+                    </p>
+                    <div class="about-signature">
+                        <div class="signature-img">
+                            <img src="https://images.unsplash.com/photo-1559599101-f09722fb4948?w=200&h=200&fit=crop&crop=face"
+                                alt="Dr. Elena COA">
+                        </div>
+                        <div>
+                            <div class="signature-name">Dr. Elena COA</div>
+                            <div class="signature-role">Founder & Wellness Director</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatments Section -->
+    <section class="section treatments" id="treatments">
+        <div class="section-inner">
+            <div class="section-header">
+                <div class="section-eyebrow">Our Treatments</div>
+                <h2 class="section-title">
+                    Curated experiences for <em>complete renewal</em>
+                </h2>
+                <p class="section-desc">
+                    Each treatment is designed to address your unique wellness needs,
+                    combining traditional healing with modern innovation.
+                </p>
+            </div>
+
+            <div class="treatments-grid">
+                <div class="treatment-card featured">
+                    <div class="treatment-main">
+                        <h3 class="treatment-name">Holistic Renewal</h3>
+                        <p class="treatment-desc">
+                            A comprehensive wellness experience combining massage therapy,
+                            energy healing, and mindfulness practices for complete restoration.
+                        </p>
+                        <button class="treatment-btn">Learn More</button>
+                    </div>
+                    <div class="treatment-price-section">
+                        <div class="treatment-price">$180</div>
+                        <div class="treatment-duration">
+                            <svg viewBox="0 0 16 16" fill="currentColor">
+                                <path
+                                    d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 14c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z" />
+                                <path d="M8 2v6l4 2-1 1.5-5-3V2h2z" />
+                            </svg>
+                            90 minutes
+                        </div>
+                    </div>
+                    <div class="treatment-features">
+                        <ul class="treatment-features-list">
+                            <li>Deep tissue massage</li>
+                            <li>Chakra balancing</li>
+                            <li>Aromatherapy session</li>
+                            <li>Meditation guidance</li>
+                            <li>Herbal tea ceremony</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="treatment-card">
+                    <div class="treatment-main">
+                        <h3 class="treatment-name">Mindful Reset</h3>
+                        <p class="treatment-desc">
+                            Reset your mental clarity with guided meditation,
+                            sound therapy, and personalized mindfulness coaching.
+                        </p>
+                        <button class="treatment-btn">Learn More</button>
+                    </div>
+                    <div class="treatment-price-section">
+                        <div class="treatment-price">$120</div>
+                        <div class="treatment-duration">
+                            <svg viewBox="0 0 16 16" fill="currentColor">
+                                <path
+                                    d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 14c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z" />
+                                <path d="M8 2v6l4 2-1 1.5-5-3V2h2z" />
+                            </svg>
+                            60 minutes
+                        </div>
+                    </div>
+                    <div class="treatment-features">
+                        <ul class="treatment-features-list">
+                            <li>Guided meditation</li>
+                            <li>Sound healing</li>
+                            <li>Breathing techniques</li>
+                            <li>Stress release therapy</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="treatment-card">
+                    <div class="treatment-main">
+                        <h3 class="treatment-name">Body Harmony</h3>
+                        <p class="treatment-desc">
+                            Restore physical balance through therapeutic massage,
+                            energy work, and customized bodywork techniques.
+                        </p>
+                        <button class="treatment-btn">Learn More</button>
+                    </div>
+                    <div class="treatment-price-section">
+                        <div class="treatment-price">$150</div>
+                        <div class="treatment-duration">
+                            <svg viewBox="0 0 16 16" fill="currentColor">
+                                <path
+                                    d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 14c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z" />
+                                <path d="M8 2v6l4 2-1 1.5-5-3V2h2z" />
+                            </svg>
+                            75 minutes
+                        </div>
+                    </div>
+                    <div class="treatment-features">
+                        <ul class="treatment-features-list">
+                            <li>Therapeutic massage</li>
+                            <li>Energy alignment</li>
+                            <li>Muscle tension release</li>
+                            <li>Flexibility enhancement</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="section why-coa" id="why-coa">
+        <div class="section-inner">
+            <!-- Animated Background Elements -->
+            <div class="why-bg-elements">
+                <div class="bg-circle bg-circle-1"></div>
+                <div class="bg-circle bg-circle-2"></div>
+                <div class="bg-circle bg-circle-3"></div>
+                <div class="bg-gradient bg-gradient-1"></div>
+                <div class="bg-gradient bg-gradient-2"></div>
+                <div class="bg-dots"></div>
+                <div class="bg-lines">
+                    <div class="bg-line bg-line-1"></div>
+                    <div class="bg-line bg-line-2"></div>
+                    <div class="bg-line bg-line-3"></div>
+                </div>
+            </div>
+
+            <!-- Center Text -->
+            <div class="why-center-content">
+                <div class="section-eyebrow">Why COA</div>
+                <h2 class="section-title">
+                    Your wellness journey <em>deserves excellence</em>
+                </h2>
+            </div>
+
+            <!-- Corner Cards -->
+            <div class="why-corner-layout">
+                <!-- Top Left -->
+                <div class="why-card corner-card top-left" data-corner="top-left">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="why-icon">
+                            <div class="icon-bg"></div>
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                            </svg>
+                        </div>
+                        <h3 class="why-title">Expert Practitioners</h3>
+                        <p class="why-text">
+                            Our certified wellness experts bring years of experience
+                            and deep knowledge of holistic healing practices.
+                        </p>
+                        <div class="card-accent"></div>
+                    </div>
+                </div>
+
+                <!-- Top Right -->
+                <div class="why-card corner-card top-right" data-corner="top-right">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="why-icon">
+                            <div class="icon-bg"></div>
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                        </div>
+                        <h3 class="why-title">Personalized Care</h3>
+                        <p class="why-text">
+                            Every treatment is customized to your unique needs,
+                            ensuring optimal results and personal transformation.
+                        </p>
+                        <div class="card-accent"></div>
+                    </div>
+                </div>
+
+                <!-- Bottom Left -->
+                <div class="why-card corner-card bottom-left" data-corner="bottom-left">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="why-icon">
+                            <div class="icon-bg"></div>
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+                            </svg>
+                        </div>
+                        <h3 class="why-title">Serene Environment</h3>
+                        <p class="why-text">
+                            Our tranquil sanctuary provides the perfect atmosphere
+                            for relaxation, healing, and inner peace.
+                        </p>
+                        <div class="card-accent"></div>
+                    </div>
+                </div>
+
+                <!-- Bottom Right -->
+                <div class="why-card corner-card bottom-right" data-corner="bottom-right">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="why-icon">
+                            <div class="icon-bg"></div>
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M9 11H7v6h2v-6zm4 0h-2v6h2v-6zm4 0h-2v6h2v-6zm2.5-9H19v2h-1.5v16.5c0 1.1-.9 2-2 2h-11c-1.1 0-2-.9-2-2V4H1V2h3.5c.28 0 .5.22.5.5V4h8V2.5c0-.28.22-.5.5-.5z" />
+                            </svg>
+                        </div>
+                        <h3 class="why-title">Holistic Approach</h3>
+                        <p class="why-text">
+                            We address mind, body, and spirit together,
+                            creating lasting wellness and transformation.
+                        </p>
+                        <div class="card-accent"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section class="section packages" id="packages">
+        <div class="section-inner">
+            <div class="section-header">
+                <div class="section-eyebrow">Wellness Packages</div>
+                <h2 class="section-title">
+                    Choose your path to <em>transformation</em>
+                </h2>
+            </div>
+
+            <div class="packages-grid">
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3 class="package-name">Essential</h3>
+                        <div class="package-price">
+                            <div class="package-amount">$299</div>
+                            <div class="package-period">per month</div>
+                        </div>
+                    </div>
+                    <p class="package-desc">
+                        Perfect for those beginning their wellness journey with essential treatments and guidance.
+                    </p>
+                    <ul class="package-features">
+                        <li>2 treatments per month</li>
+                        <li>Wellness consultation</li>
+                        <li>Access to meditation space</li>
+                        <li>Herbal tea selection</li>
+                    </ul>
+                    <button class="package-btn">Choose Essential</button>
+                </div>
+
+                <div class="package-card featured">
+                    <div class="package-header">
+                        <h3 class="package-name">Transform</h3>
+                        <div class="package-price">
+                            <div class="package-amount">$499</div>
+                            <div class="package-period">per month</div>
+                        </div>
+                    </div>
+                    <p class="package-desc">
+                        Comprehensive wellness program for deep transformation and lasting change.
+                    </p>
+                    <ul class="package-features">
+                        <li>4 treatments per month</li>
+                        <li>Personal wellness coach</li>
+                        <li>Nutrition guidance</li>
+                        <li>Priority booking</li>
+                        <li>Exclusive workshops</li>
+                    </ul>
+                    <button class="package-btn">Choose Transform</button>
+                </div>
+
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3 class="package-name">Renewal</h3>
+                        <div class="package-price">
+                            <div class="package-amount">$399</div>
+                            <div class="package-period">per month</div>
+                        </div>
+                    </div>
+                    <p class="package-desc">
+                        Balanced approach to wellness with regular treatments and ongoing support.
+                    </p>
+                    <ul class="package-features">
+                        <li>3 treatments per month</li>
+                        <li>Monthly wellness check-in</li>
+                        <li>Group meditation sessions</li>
+                        <li>Wellness library access</li>
+                    </ul>
+                    <button class="package-btn">Choose Renewal</button>
+                </div>
+
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3 class="package-name">Sanctuary</h3>
+                        <div class="package-price">
+                            <div class="package-amount">$799</div>
+                            <div class="package-period">per month</div>
+                        </div>
+                    </div>
+                    <p class="package-desc">
+                        Ultimate wellness experience with unlimited access and premium services.
+                    </p>
+                    <ul class="package-features">
+                        <li>Unlimited treatments</li>
+                        <li>24/7 wellness support</li>
+                        <li>Private consultation room</li>
+                        <li>Customized wellness plan</li>
+                        <li>VIP events access</li>
+                    </ul>
+                    <button class="package-btn">Choose Sanctuary</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials" id="testimonials">
+        <div class="section-inner">
+            <div class="section-header">
+                <div class="section-eyebrow">Client Stories</div>
+                <h2 class="section-title">
+                    Transformations that <em>inspire</em>
+                </h2>
+                <p class="section-desc">
+                    Discover how our wellness journey has transformed the lives of our cherished clients.
+                </p>
+            </div>
+
+            <div class="testimonials-carousel">
+                <div class="testimonials-track" id="testimonials-track">
+                    <div class="testimonial-card active">
+                        <div class="testimonial-content">
+                            <div class="testimonial-quote">
+                                "COA has completely transformed my approach to wellness. The holistic treatments
+                                and personalized care have helped me find balance I never thought possible."
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-image">
+                                    <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=80&h=80&fit=crop&crop=face"
+                                        alt="Sarah Chen">
+                                </div>
+                                <div class="author-info">
+                                    <div class="author-name">Sarah Chen</div>
+                                    <div class="author-role">Marketing Executive</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-quote">
+                                "The mindful reset sessions have been life-changing. I've learned to manage stress
+                                better and found inner peace through their expert guidance."
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-image">
+                                    <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=80&h=80&fit=crop&crop=face"
+                                        alt="Michael Rodriguez">
+                                </div>
+                                <div class="author-info">
+                                    <div class="author-name">Michael Rodriguez</div>
+                                    <div class="author-role">Software Engineer</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-quote">
+                                "Every visit to COA feels like a retreat. The serene environment and expert
+                                practitioners create the perfect space for healing and renewal."
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-image">
+                                    <img src="https://images.unsplash.com/photo-1594824804732-5f7c0c9b8b8e?w=80&h=80&fit=crop&crop=face"
+                                        alt="Emma Thompson">
+                                </div>
+                                <div class="author-info">
+                                    <div class="author-name">Emma Thompson</div>
+                                    <div class="author-role">Yoga Instructor</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-quote">
+                                "The holistic approach at COA addresses not just physical wellness but mental and
+                                spiritual health too. It's truly transformative."
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-image">
+                                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&h=80&fit=crop&crop=face"
+                                        alt="David Park">
+                                </div>
+                                <div class="author-info">
+                                    <div class="author-name">David Park</div>
+                                    <div class="author-role">Business Owner</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-quote">
+                                "I've tried many wellness centers, but COA stands apart. Their personalized
+                                treatments and caring staff make all the difference."
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-image">
+                                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&h=80&fit=crop&crop=face"
+                                        alt="Lisa Wang">
+                                </div>
+                                <div class="author-info">
+                                    <div class="author-name">Lisa Wang</div>
+                                    <div class="author-role">Creative Director</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev-btn" id="prev-testimonial">
+                        <svg viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 0L0 8L8 16L9 15L3 9H16V7H3L9 1L8 0Z" />
+                        </svg>
+                    </button>
+                    <div class="carousel-dots" id="testimonial-dots">
+                        <button class="dot active" data-slide="0"></button>
+                        <button class="dot" data-slide="1"></button>
+                        <button class="dot" data-slide="2"></button>
+                        <button class="dot" data-slide="3"></button>
+                        <button class="dot" data-slide="4"></button>
+                    </div>
+                    <button class="carousel-btn next-btn" id="next-testimonial">
+                        <svg viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 0L16 8L8 16L7 15L13 9H0V7H13L7 1L8 0Z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Strips Container -->
+    <div class="info-strips-container">
+        <!-- Second Info Strip -->
+        <div class="info-strip info-strip-secondary">
+            <div class="info-strip-inner">
+                <div class="info-strip-content">
+                    <div class="info-item">
+                        <span class="info-text">Award-Winning Spa</span>
+                        <div class="info-dot"></div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-text">Certified Practitioners</span>
+                        <div class="info-dot"></div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-text">Premium Treatments</span>
+                        <div class="info-dot"></div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-text">Luxury Experience</span>
+                        <div class="info-dot"></div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-text">Personalized Care</span>
+                        <div class="info-dot"></div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-text">Wellness Innovation</span>
+                        <div class="info-dot"></div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-text">Transformative Results</span>
+                        <div class="info-dot"></div>
+                    </div>
+                </div>
+                <!-- Duplicate for seamless loop -->
+                <div class="info-strip-content">
+                    <div class="info-item">
+                        <span class="info-text">Award-Winning Spa</span>
+                        <div class="info-dot"></div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-text">Certified Practitioners</span>
+                        <div class="info-dot"></div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-text">Premium Treatments</span>
+                        <div class="info-dot"></div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-text">Luxury Experience</span>
+                        <div class="info-dot"></div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-text">Personalized Care</span>
+                        <div class="info-dot"></div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-text">Wellness Innovation</span>
+                        <div class="info-dot"></div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-text">Transformative Results</span>
+                        <div class="info-dot"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Third Info Strip -->
+        <div class="info-strip info-strip-third">
+            <div class="info-strip-inner">
+                <div class="info-strip-content">
+                    <div class="info-item">
+                        <span class="info-text">5-Star Reviews</span>
+                        <div class="info-dot"></div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-text">Expert Therapists</span>
+                        <div class="info-dot"></div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-text">Natural Products</span>
+                        <div class="info-dot"></div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-text">Relaxing Atmosphere</span>
+                        <div class="info-dot"></div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-text">Wellness Journey</span>
+                        <div class="info-dot"></div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-text">Mind-Body Balance</span>
+                        <div class="info-dot"></div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-text">Holistic Healing</span>
+                        <div class="info-dot"></div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-text">Inner Peace</span>
+                        <div class="info-dot"></div>
+                    </div>
+                </div>
+                <!-- Duplicate for seamless loop -->
+                <div class="info-strip-content">
+                    <div class="info-item">
+                        <span class="info-text">5-Star Reviews</span>
+                        <div class="info-dot"></div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-text">Expert Therapists</span>
+                        <div class="info-dot"></div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-text">Natural Products</span>
+                        <div class="info-dot"></div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-text">Relaxing Atmosphere</span>
+                        <div class="info-dot"></div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-text">Wellness Journey</span>
+                        <div class="info-dot"></div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-text">Mind-Body Balance</span>
+                        <div class="info-dot"></div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-text">Holistic Healing</span>
+                        <div class="info-dot"></div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-text">Inner Peace</span>
+                        <div class="info-dot"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="section faq" id="faq">
+        <div class="section-inner">
+            <div class="section-header">
+                <div class="section-eyebrow">Frequently Asked</div>
+                <h2 class="section-title">
+                    Questions & <em>Answers</em>
+                </h2>
+                <p class="section-desc">
+                    Find answers to common questions about our wellness treatments and services.
+                </p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item" data-faq="0">
+                    <div class="faq-question">
+                        <h3>What should I expect during my first visit?</h3>
+                        <div class="faq-icon">
+                            <svg viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M8 0L16 8L8 16L7 15L13 9H0V7H13L7 1L8 0Z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Your first visit begins with a comprehensive wellness consultation where we discuss your
+                                health history, goals, and preferences. Our expert practitioners will create a
+                                personalized treatment plan tailored to your unique needs. The session includes a tour
+                                of our facilities and an introduction to our holistic approach to wellness.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-faq="1">
+                    <div class="faq-question">
+                        <h3>How long are the treatment sessions?</h3>
+                        <div class="faq-icon">
+                            <svg viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M8 0L16 8L8 16L7 15L13 9H0V7H13L7 1L8 0Z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Treatment sessions vary depending on the service you choose. Our Mindful Reset sessions
+                                are 60 minutes, Body Harmony treatments last 75 minutes, and our comprehensive Holistic
+                                Renewal experience is 90 minutes. Each session includes preparation time and a brief
+                                consultation to ensure optimal results.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-faq="2">
+                    <div class="faq-question">
+                        <h3>Do I need to prepare anything before my treatment?</h3>
+                        <div class="faq-icon">
+                            <svg viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M8 0L16 8L8 16L7 15L13 9H0V7H13L7 1L8 0Z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>We recommend arriving 15 minutes early to settle in and complete any necessary forms.
+                                Wear comfortable, loose-fitting clothing and avoid heavy meals 2 hours before your
+                                session. Stay hydrated throughout the day, and come with an open mind ready to embrace
+                                the healing process.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-faq="3">
+                    <div class="faq-question">
+                        <h3>Are your treatments suitable for beginners?</h3>
+                        <div class="faq-icon">
+                            <svg viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M8 0L16 8L8 16L7 15L13 9H0V7H13L7 1L8 0Z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Absolutely! Our treatments are designed for all experience levels. Our expert
+                                practitioners will guide you through each step, ensuring you feel comfortable and
+                                supported throughout your wellness journey. We customize every session to match your
+                                comfort level and experience.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-faq="4">
+                    <div class="faq-question">
+                        <h3>How often should I schedule treatments?</h3>
+                        <div class="faq-icon">
+                            <svg viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M8 0L16 8L8 16L7 15L13 9H0V7H13L7 1L8 0Z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>The frequency depends on your wellness goals and lifestyle. For stress relief and
+                                maintenance, we recommend monthly sessions. For deeper transformation or addressing
+                                specific concerns, weekly or bi-weekly treatments may be more beneficial. Our
+                                practitioners will work with you to create an optimal schedule.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-faq="5">
+                    <div class="faq-question">
+                        <h3>What makes COA different from other wellness centers?</h3>
+                        <div class="faq-icon">
+                            <svg viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M8 0L16 8L8 16L7 15L13 9H0V7H13L7 1L8 0Z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>COA combines ancient healing wisdom with modern wellness techniques in a truly
+                                personalized approach. Our certified practitioners focus on treating the whole person -
+                                mind, body, and spirit. We create a serene, supportive environment where every detail is
+                                designed to enhance your healing journey.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="section-inner">
+            <div class="section-header">
+                <div class="section-eyebrow">Get in Touch</div>
+                <h2 class="section-title">
+                    Begin your <em>transformation today</em>
+                </h2>
+                <p class="section-desc">
+                    Ready to embark on your wellness journey? Fill out the form below and we'll get back to you within
+                    24 hours.
+                </p>
+            </div>
+
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Visit Us</h3>
+                            <p>123 Wellness Avenue<br>COA District, CA 90210</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Call Us</h3>
+                            <p>(555) 123-WELLNESS<br>Mon-Fri: 8AM-8PM</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email Us</h3>
+                            <p>hello@coa.com<br>info@coa.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-container">
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="service">Interested Service</label>
+                            <select id="service" name="service">
+                                <option value="">Select a service</option>
+                                <option value="holistic-renewal">Holistic Renewal</option>
+                                <option value="mindful-reset">Mindful Reset</option>
+                                <option value="body-harmony">Body Harmony</option>
+                                <option value="consultation">Initial Consultation</option>
+                                <option value="package">Wellness Package</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="preferredDate">Preferred Date</label>
+                            <input type="date" id="preferredDate" name="preferredDate">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5"
+                                placeholder="Tell us about your wellness goals and any specific needs..."
+                                required></textarea>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="newsletter" name="newsletter">
+                                <span class="checkmark"></span>
+                                Subscribe to our wellness newsletter for tips and updates
+                            </label>
+                        </div>
+
+                        <button type="submit" class="form-submit-btn">
+                            <span class="btn-text">Send Message</span>
+                            <span class="btn-loading" style="display: none;">
+                                <svg class="spinner" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-dasharray="31.416" stroke-dashoffset="31.416">
+                                        <animate attributeName="stroke-dasharray" dur="2s"
+                                            values="0 31.416;15.708 15.708;0 31.416" repeatCount="indefinite" />
+                                        <animate attributeName="stroke-dashoffset" dur="2s" values="0;-15.708;-31.416"
+                                            repeatCount="indefinite" />
+                                    </circle>
+                                </svg>
+                                Sending...
+                            </span>
+                            <svg class="btn-arrow" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M8 0L16 8L8 16L7 15L13 9H0V7H13L7 1L8 0Z" />
+                            </svg>
+                        </button>
+                    </form>
+
+                    <div class="form-success" id="form-success" style="display: none;">
+                        <div class="success-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                            </svg>
+                        </div>
+                        <h3>Thank You!</h3>
+                        <p>Your message has been sent successfully. We'll get back to you within 24 hours to discuss
+                            your wellness journey.</p>
+                        <button class="success-btn" onclick="resetContactForm()">Send Another Message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="logo">
+                <span>COA</span>
+                <div class="logo-dot"></div>
+            </div>
+            <p class="footer-text">
+                Transform your being. Elevate your wellness. Discover your sanctuary.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+
+</html>

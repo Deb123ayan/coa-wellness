@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up — COA Wellness</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,700&display=swap"
+        rel="stylesheet">
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Auth Page Specific Styles */
+        .auth-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-warm) 50%, var(--cream-dark) 100%);
+            padding: var(--space-32);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-container {
+            background: var(--white);
+            border-radius: 24px;
+            box-shadow: 0 30px 80px rgba(106, 59, 51, 0.15);
+            border: 1px solid var(--border-light);
+            overflow: hidden;
+            max-width: 900px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 600px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .auth-visual {
+            background: linear-gradient(135deg, var(--terracotta) 0%, var(--rose) 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-48);
+            overflow: hidden;
+        }
+
+        .auth-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&h=600&fit=crop&crop=center') center/cover;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .auth-visual-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .auth-logo {
+            font-family: var(--font-display);
+            font-size: 48px;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            margin-bottom: var(--space-24);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .auth-tagline {
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-style: italic;
+            margin-bottom: var(--space-16);
+            opacity: 0.9;
+        }
+
+        .auth-description {
+            font-size: 16px;
+            line-height: 1.6;
+            opacity: 0.8;
+            max-width: 300px;
+        }
+
+        .auth-form-section {
+            padding: var(--space-48);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: var(--space-40);
+        }
+
+        .auth-title {
+            font-family: var(--font-display);
+            font-size: 32px;
+            color: var(--charcoal);
+            margin-bottom: var(--space-12);
+        }
+
+        .auth-subtitle {
+            color: var(--text-medium);
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-24);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-16);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-8);
+        }
+
+        .form-group label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--charcoal);
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: var(--space-16);
+            border: 1px solid var(--border-medium);
+            border-radius: 12px;
+            font-size: 15px;
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            background: var(--cream-golden);
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--terracotta);
+            box-shadow: 0 0 0 3px rgba(106, 59, 51, 0.1);
+            background: var(--white);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: var(--space-12);
+            margin: var(--space-16) 0;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: var(--space-12);
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--text-medium);
+            line-height: 1.5;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            display: none;
+        }
+
+        .checkmark {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border-medium);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--duration-normal) var(--ease-out);
+            flex-shrink: 0;
+        }
+
+        .checkbox-label input[type="checkbox"]:checked + .checkmark {
+            background: var(--terracotta);
+            border-color: var(--terracotta);
+        }
+
+        .checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+            content: '✓';
+            color: var(--white);
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .auth-submit {
+            background: var(--terracotta);
+            color: var(--white);
+            border: none;
+            border-radius: 12px;
+            padding: var(--space-18) var(--space-32);
+            font-size: 16px;
+            font-weight: 500;
+            font-family: var(--font-body);
+            cursor: pointer;
+            transition: all var(--duration-normal) var(--ease-out);
+            margin-top: var(--space-16);
+        }
+
+        .auth-submit:hover {
+            background: var(--charcoal);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(106, 59, 51, 0.3);
+        }
+
+        .auth-divider {
+            display: flex;
+            align-items: center;
+            gap: var(--space-16);
+            margin: var(--space-24) 0;
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        .auth-divider::before,
+        .auth-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border-light);
+        }
+
+        .auth-link {
+            text-align: center;
+            margin-top: var(--space-24);
+            font-size: 14px;
+            color: var(--text-medium);
+        }
+
+        .auth-link a {
+            color: var(--terracotta);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--duration-normal) var(--ease-out);
+        }
+
+        .auth-link a:hover {
+            color: var(--charcoal);
+        }
+
+        .back-link {
+            position: absolute;
+            top: var(--space-32);
+            left: var(--space-32);
+            display: flex;
+            align-items: center;
+            gap: var(--space-8);
+            color: var(--text-medium);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all var(--duration-normal) var(--ease-out);
+            z-index: 20;
+        }
+
+        .back-link:hover {
+            color: var(--terracotta);
+            transform: translateX(-4px);
+        }
+
+        .back-link svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .auth-container {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+
+            .auth-visual {
+                min-height: 200px;
+                padding: var(--space-32);
+            }
+
+            .auth-logo {
+                font-size: 36px;
+            }
+
+            .auth-tagline {
+                font-size: 20px;
+            }
+
+            .auth-form-section {
+                padding: var(--space-32);
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .auth-page {
+                padding: var(--space-16);
+            }
+
+            .auth-container {
+                border-radius: 16px;
+            }
+
+            .auth-visual {
+                padding: var(--space-24);
+            }
+
+            .auth-form-section {
+                padding: var(--space-24);
+            }
+
+            .back-link {
+                top: var(--space-16);
+                left: var(--space-16);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Global Animated Background -->
+    <div class="global-bg-elements">
+        <div class="bg-orb bg-orb-1"></div>
+        <div class="bg-orb bg-orb-2"></div>
+        <div class="bg-orb bg-orb-3"></div>
+        <div class="bg-particle bg-particle-1"></div>
+        <div class="bg-particle bg-particle-2"></div>
+        <div class="bg-particle bg-particle-3"></div>
+        <div class="bg-wave bg-wave-1"></div>
+        <div class="bg-geometric bg-geo-1"></div>
+        <div class="bg-geometric bg-geo-2"></div>
+    </div>
+
+    <div class="auth-page">
+        <a href="custom_design.html" class="back-link">
+            <svg viewBox="0 0 16 16" fill="currentColor">
+                <path d="M8 0L0 8L8 16L9 15L3 9H16V7H3L9 1L8 0Z" />
+            </svg>
+            Back to Home
+        </a>
+
+        <div class="auth-container">
+            <div class="auth-visual">
+                <div class="auth-visual-content">
+                    <div class="auth-logo">COA</div>
+                    <div class="auth-tagline">Transform Your Being</div>
+                    <p class="auth-description">
+                        Join our wellness community and embark on a journey of holistic healing and inner transformation.
+                    </p>
+                </div>
+            </div>
+
+            <div class="auth-form-section">
+                <div class="auth-header">
+                    <h1 class="auth-title">Create Account</h1>
+                    <p class="auth-subtitle">Begin your wellness journey with personalized care and expert guidance.</p>
+                </div>
+
+                <form class="auth-form" id="signup-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="password">Password *</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password *</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="interests">Primary Interest</label>
+                        <select id="interests" name="interests">
+                            <option value="">Select your main interest</option>
+                            <option value="massage">Massage Therapy</option>
+                            <option value="wellness">Wellness Coaching</option>
+                            <option value="meditation">Meditation & Mindfulness</option>
+                            <option value="holistic">Holistic Healing</option>
+                            <option value="packages">Wellness Packages</option>
+                        </select>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <span class="checkmark"></span>
+                            I agree to the <a href="#" style="color: var(--terracotta);">Terms of Service</a> and <a href="#" style="color: var(--terracotta);">Privacy Policy</a>
+                        </label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="newsletter" name="newsletter">
+                            <span class="checkmark"></span>
+                            Subscribe to wellness tips and exclusive offers
+                        </label>
+                    </div>
+
+                    <button type="submit" class="auth-submit">Create Account</button>
+                </form>
+
+                <div class="auth-divider">or</div>
+
+                <div class="auth-link">
+                    Already have an account? <a href="login.html">Sign In</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize GSAP
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Animate page entrance
+        gsap.timeline({ delay: 0.2 })
+            .from('.auth-container', { 
+                opacity: 0, 
+                y: 50, 
+                scale: 0.95, 
+                duration: 1, 
+                ease: "power2.out" 
+            })
+            .from('.back-link', { 
+                opacity: 0, 
+                x: -20, 
+                duration: 0.6, 
+                ease: "power2.out" 
+            }, "-=0.5");
+
+        // Form submission
+        document.getElementById('signup-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Basic validation
+            if (data.password !== data.confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+            
+            if (!data.terms) {
+                alert('Please accept the Terms of Service and Privacy Policy.');
+                return;
+            }
+            
+            // Simulate account creation
+            const submitBtn = this.querySelector('.auth-submit');
+            submitBtn.textContent = 'Creating Account...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert('Account created successfully! Welcome to COA Wellness.');
+                window.location.href = 'custom_design.html';
+            }, 2000);
+        });
+
+        // Background animation
+        gsap.utils.toArray('.bg-orb').forEach((orb, index) => {
+            gsap.to(orb, {
+                x: `random(-30, 30)`,
+                y: `random(-20, 20)`,
+                scale: `random(0.8, 1.2)`,
+                duration: `random(10, 15)`,
+                ease: "sine.inOut",
+                repeat: -1,
+                yoyo: true,
+                delay: index * 1
+            });
+        });
+    </script>
+</body>
+
+</html>
