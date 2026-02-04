@@ -393,6 +393,10 @@ button {
     transform: translate(-50%, -50%);
     object-fit: cover;
     z-index: -3;
+    /* Optimize for smooth looping */
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 .hero-bg-overlay {

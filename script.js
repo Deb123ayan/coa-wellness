@@ -53,6 +53,38 @@ document.addEventListener('DOMContentLoaded', function() {
         .call(initAnimations);
 
     // ============================================
+    // SMOOTH VIDEO LOOP
+    // ============================================
+    const heroVideo = document.querySelector('.hero-bg-video');
+    if (heroVideo) {
+        // Ensure smooth looping
+        heroVideo.addEventListener('loadeddata', function() {
+            // Set video to start slightly before the end to create seamless loop
+            heroVideo.currentTime = 0.1;
+        });
+
+        // Handle loop event for smoother transition
+        heroVideo.addEventListener('timeupdate', function() {
+            // When video is near the end, smoothly restart
+            if (heroVideo.currentTime >= heroVideo.duration - 0.1) {
+                heroVideo.currentTime = 0.1;
+            }
+        });
+
+        // Ensure video plays smoothly
+        heroVideo.addEventListener('canplaythrough', function() {
+            heroVideo.play().catch(function(error) {
+                console.log('Video autoplay prevented:', error);
+            });
+        });
+
+        // Handle any playback issues
+        heroVideo.addEventListener('error', function(e) {
+            console.log('Video error:', e);
+        });
+    }
+
+    // ============================================
     // NAVIGATION SCROLL EFFECT
     // ============================================
     const nav = document.getElementById('nav');
