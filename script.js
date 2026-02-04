@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Smooth scroll for navigation links
-    document.querySelectorAll('.nav-link, .hero-cta').forEach(link => {
+    document.querySelectorAll('.nav-link, .hero-cta, .nav-cta').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const targetId = link.getAttribute('href');
@@ -119,6 +119,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // About Section
         animateAbout();
+        
+        // About Us Section
+        animateAboutUs();
     }
 
     // ============================================
@@ -1154,7 +1157,108 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // ============================================
+    // ABOUT US SECTION ANIMATIONS
+    // ============================================
+    function animateAboutUs() {
+        // Check if About Us section exists
+        const aboutUsSection = document.querySelector('.about-us');
+        if (!aboutUsSection) return;
 
+        // Animate title
+        gsap.from('.about-us-title', {
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: '.about-us-title',
+                start: "top 80%",
+                toggleActions: "play none none reverse"
+            }
+        });
+
+        // Page fold animations for images
+        const foldImages = document.querySelectorAll('.fold-animation');
+        
+        foldImages.forEach((image, index) => {
+            // Initial state - folded
+            gsap.set(image, {
+                rotationY: -90,
+                transformOrigin: "left center",
+                opacity: 0
+            });
+
+            // Unfold animation
+            gsap.to(image, {
+                rotationY: 0,
+                opacity: 1,
+                duration: 1.2,
+                ease: "power3.out",
+                delay: index * 0.2,
+                scrollTrigger: {
+                    trigger: image,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                }
+            });
+
+            // Add hover fold effect
+            image.addEventListener('mouseenter', () => {
+                gsap.to(image, {
+                    rotationY: 5,
+                    scale: 1.05,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+
+            image.addEventListener('mouseleave', () => {
+                gsap.to(image, {
+                    rotationY: 0,
+                    scale: 1,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+        });
+
+        // Animate text content
+        gsap.from('.about-us-center .about-us-text', {
+            opacity: 0,
+            y: 40,
+            duration: 1,
+            ease: "power2.out",
+            stagger: 0.2,
+            delay: 0.5,
+            scrollTrigger: {
+                trigger: '.about-us-center',
+                start: "top 80%",
+                toggleActions: "play none none reverse"
+            }
+        });
+
+        // Add parallax effect to left and right columns
+        gsap.to('.about-us-left', {
+            y: -30,
+            scrollTrigger: {
+                trigger: '.about-us-layout',
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 1
+            }
+        });
+
+        gsap.to('.about-us-right', {
+            y: 30,
+            scrollTrigger: {
+                trigger: '.about-us-layout',
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 1
+            }
+        });
+    }
 
     // ============================================
     // HOVER EFFECTS
